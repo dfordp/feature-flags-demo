@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-import { LDClient } from "launchdarkly-js-client-sdk";
+import { createClient } from "@statsig/client";
 
 const Header = () => {
-	const ldClient = LDClient.initialize("YOUR_CLIENT_SIDE_ID", {
-		key: "user_key",
-		name: "User Name",
-	});
+	const client = await createClient("YOUR_STATSIG_API_KEY", {
+        environment: "YOUR_CLIENT_SIDE_ID"
+    });
 	const user = LDClient.User({
 		key: "user_key",
 		name: "User Name",
